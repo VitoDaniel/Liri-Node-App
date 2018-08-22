@@ -15,18 +15,35 @@ var moment = require('moment');
 var input = process.argv[2];
 var arg = process.argv[3];
 
-
-switch (input) {
+var switchFuncion = (input, arg) => {
+    switch (input) {
 	case "spotify-this-song":
 		searchSpotify.spotifySong(arg);
 		break;
 	case "movie-this":
+		console.log(searchOMDB);
+		console.log(typeof searchOMDB.omdbMovie);
 		searchOMDB.omdbMovie(arg);
 		break;
 	case "concert-this":
-		searchBands.get_concerts(arg);
+		searchBands.getConcerts(arg);
 		break;
 	case "do-what-it-says":
-		liri_says();
+		liriSays();
 		break;
-};
+    }
+}
+
+function liriSays(){
+	fs.readFile('random.txt', "utf8", function(err, data) {
+		if(err) {
+		console.log(err)
+		} else {
+		var splitData = data.split(",");
+		console.log(splitData);
+		switchFuncion(splitData[0],splitData[1]);
+		}
+	});
+}
+
+switchFuncion(input, arg);
