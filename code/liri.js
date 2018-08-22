@@ -21,8 +21,8 @@ var switchFuncion = (input, arg) => {
 		searchSpotify.spotifySong(arg);
 		break;
 	case "movie-this":
-		console.log(searchOMDB);
-		console.log(typeof searchOMDB.omdbMovie);
+		// console.log(searchOMDB);
+		// console.log(typeof searchOMDB.omdbMovie);
 		searchOMDB.omdbMovie(arg);
 		break;
 	case "concert-this":
